@@ -337,6 +337,17 @@ module.exports = function (grunt) {
 				'cssmin',
 				'usemin'
 			]
+		},
+		postcss: {
+			options: {
+				processors: [
+					require('autoprefixer-core')({browsers: 'last 2 versions'})
+				]
+			},
+			build: {
+				src: '.tmp/css/styles.css',
+				dest: '<%= yeoman.build %>/css/styles.css'
+			}
 		}
 	});
 
@@ -365,6 +376,7 @@ module.exports = function (grunt) {
 		'concat',
 		'copy:build',
 		'cssmin',
+		'postcss',
 		'uglify',
 		'usemin'/*,
 		'rev'*/
